@@ -1,9 +1,14 @@
-// generates random integer between two values
+// global variables
+playerScore = 0;
+compScore = 0;
+ties = 0;
+
+// generate random integer between two values
 function getRandInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// generates a random move for the CPU player
+// generate a random move for the CPU player
 function getCompMove() {
   let compMove = "";
   let rInt = getRandInt(1, 3);
@@ -17,7 +22,7 @@ function getCompMove() {
   }
 }
 
-// gets player move
+// get player move
 function getPlayerMove() {
   let playerMove = prompt("What is your move? Enter (R)ock, (P)aper, or (S)cissors ");
   playerMove = playerMove.charAt(0).toUpperCase();
@@ -28,26 +33,39 @@ function getPlayerMove() {
     getPlayerMove();
   }
 }
-// scores the round
+// score the round
 function scoreRound(playerMove, compMove) {
   if (playerMove === compMove) {
+    ties++
     return "Tie";
   }
-  else if (playerMove === "R" && compMove === "S") {
-    return "You win!"
+  else if (playerMove === "R") {
+    if (compMove === "P") {
+      compScore++
+      return "Computer wins!";
+    }
+    playerScore++
+    return "You win!";
   }
-  else if (playerMove === "P" && compMove === "R") {
-    return "You win!"
+  else if (playerMove === "P") {
+    if (compMove === "S") {
+      compScore++
+      return "Computer wins!";
+    }
+    playerScore++
+    return "You win!";
   }
-  else if (playerMove === "S" && compMove === "P") {
-    return "You win!"
-  }
-  else {
-    return "Computer wins!"
+  else if (playerMove === "S") {
+    if (compMove === "R") {
+      compScore++
+      return "Computer wins!";
+    }
+    playerScore++
+    return "You win!";
   }
 }
 
-// starts gameplay
+// start gameplay
 function playGame() {
   let roundCount = prompt("How many rounds would you like to play? ")
   for (i = 0; i < roundCount; i++) {
@@ -56,8 +74,6 @@ function playGame() {
     console.log(`player played: ${playerMove} and computer played ${compMove}`);
     console.log(scoreRound(playerMove, compMove))
   }
-
-
 }
 
 playGame()
