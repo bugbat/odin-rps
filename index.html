@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="./rpsgame.js"></script>
+  <link rel="stylesheer" href="styles.css"> 
+  <script src="./rpsgame.js" defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock, Paper Scissors</title>
 </head>
 <body>
-  
+  <div class="wrapper">
+    <div class="header">
+      <h1>Rock, Paper, Scissors!</h1>
+    </div>
+    <div class="results">
+      <div class="choice">
+        <div id="playerchoice">Player choice</div>
+      </div>
+      <div>VS</div>
+      <div class="choice">
+        <div id="compchoice">CPU Choice</div>
+      </div>
+    </div>
+    <div class="scores">
+      <p><span id="playerscore">0</span> wins</p>
+      <p><span id="compscore">0</span> wins</p>
+    </div>
+    <div class="buttons">
+      <button type="button" id="rock">Rock</button>
+      <button type="button" id="paper">Paper</button>
+      <button type="button" id="scissors">Scissors</button>
+    </div>
+  </div>
 </body>
 </html>

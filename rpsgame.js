@@ -66,14 +66,26 @@ function scoreRound(playerMove, compMove) {
 }
 
 // start gameplay
-function playGame() {
-  let roundCount = prompt("How many rounds would you like to play? ")
-  for (i = 0; i < roundCount; i++) {
-    let playerMove = getPlayerMove();
+function playGame(playerChoice) {
+  // let roundCount = prompt("How many rounds would you like to play? ")
+  for (i = 0; i < 1; i++) {
+    let playerMove = playerChoice;
     let compMove = getCompMove();
     console.log(`player played: ${playerMove} and computer played ${compMove}`);
     console.log(scoreRound(playerMove, compMove))
   }
 }
 
-playGame()
+//playGame()
+
+// set up buttons to send choice to function
+
+const choiceButtons = document.querySelectorAll("button");
+
+
+choiceButtons.forEach(button => {
+  button.addEventListener("click", function() {
+    playGame(button.id);
+  });
+  }
+);
